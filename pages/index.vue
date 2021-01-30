@@ -1,73 +1,57 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        nuxt-story
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <section id="posts">
+    <PostPreview
+      v-for="post in posts"
+      :key="post.id"
+      :title="post.title"
+      :excerpt="post.previewText"
+      :thumbnailImage="post.thumbnailUrl"
+      :id="post.id"
+    />
+  </section>
 </template>
 
 <script>
-export default {}
+import PostPreview from "../components/Blog/PostPreview";
+export default {
+  components: {
+    PostPreview
+  },
+  data() {
+    return {
+      posts: [
+        {
+          id: "1",
+          title: "A New Beginning",
+          previewText: "This is Awesome",
+          thumbnailUrl:
+            "https://www.helpguide.org/wp-content/uploads/fast-foods-candy-cookies-pastries-768.jpg"
+        },
+        {
+          id: "2",
+          title: "A New Beginning 2",
+          previewText: "This is Awesome 2",
+          thumbnailUrl:
+            "https://www.helpguide.org/wp-content/uploads/fast-foods-candy-cookies-pastries-768.jpg"
+        }
+      ]
+    };
+  }
+};
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+<style scoped>
+#posts {
+  padding-top: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  flex-direction: column;
 }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+@media (min-width: 35rem) {
+  #posts {
+    flex-direction: row;
+  }
 }
 </style>
