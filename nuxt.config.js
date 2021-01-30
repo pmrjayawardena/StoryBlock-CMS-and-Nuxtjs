@@ -40,8 +40,10 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
-    "bootstrap-vue/nuxt"
+    [
+      "storyblok-nuxt",
+      { accessToken: "AEbWGtgoDCwzjlQG4g15rgtt", cacheProvider: "memory" }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
